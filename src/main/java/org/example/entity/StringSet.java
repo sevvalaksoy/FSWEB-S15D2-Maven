@@ -22,11 +22,13 @@ public class StringSet {
                 + "Alice's Adventures Under Ground and includes episodes, such as the Mad Tea-Party, "
                 + "that did not appear in the manuscript. The only known manuscript copy of Under Ground "
                 + "is held in the British Library. Macmillan published a facsimile of the manuscript in 1886.";
-        text = text.replaceAll("[.!?]", "");
+        text = text.replaceAll("[^a-zA-Z ]", "").toLowerCase();
         Set<String> words = new TreeSet<>();
         String[] newText = text.split(" ");
         for(String t: newText){
-            words.add(t);
+            if (!t.isEmpty()) {
+                words.add(t);
+            }
         }
         return words;
     }
